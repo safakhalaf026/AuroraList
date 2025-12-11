@@ -20,11 +20,19 @@ Aurora List helps users keep track of items they want to buy, discover wishlist 
 ## 📁 RESTful Routes Overview
 | Action | Method | Route | Description |
 |--------|--------|--------|-------------|
-| New Item Form | GET | `/wishlist/new` | Display form to create a new item |
-| Create Item | POST | `/wishlist` | Add new item to logged-in user's wishlist |
-| All Wishlists | GET | `/wishlists` | View all items created by all users |
-| User Wishlist | GET | `/wishlist/me` | View only your own wishlist items |
-| Edit Form | GET | `/wishlist/:id/edit` | Display edit form for a specific item |
-| Update Item | PUT/PATCH | `/wishlist/:id` | Update wishlist item you own |
-| Delete Item | DELETE | `/wishlist/:id` | Delete a wishlist item you own |
-| Copy Item | POST | `/wishlist/:id/copy` | Add another user’s item to your wishlist |
+
+| New Item Form | GET | `/items/new` | Display form to create a new item |
+
+| Create Item | POST | `/items` | Add new item to logged-in user's wishlist |
+
+| All Items | GET | `/items` | View all items created by all users |
+
+| User Wishlist | GET | `/items/` | View only your own wishlist items |
+
+| Edit Form | GET | `/items/:id/edit` | Display edit form for a specific item |
+
+| Update Item | PUT | `/items/:id` | Update wishlist item you own |
+
+| Delete Item | DELETE | `/items/:id` | Delete a wishlist item you own |
+
+| Copy Item | POST | `/items/:id/copy` | Add another user’s item to your wishlist |
