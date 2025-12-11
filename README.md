@@ -20,10 +20,11 @@ Aurora List helps users keep track of items they want to buy, discover wishlist 
 ## 📁 RESTful Routes Overview
 | Action | Method | Route | Description |
 |--------|--------|--------|-------------|
-| All Items | GET | `/items` | View all items created by all users |
+| All Items | GET | `/items` |Full index (Show More) |
+| User Wishlist | GET | `/items/mine` | User full index (Show All) |
 | New Item Form | GET | `/items/new` | Display form to create a new item |
 | Create Item | POST | `/items` | Add new item to logged-in user's wishlist |
-| User Wishlist | GET | `/items/` | View only your own wishlist items |
+| Show Single Item | GET | `/items/:id` | Display details page of a single item |
 | Edit Form | GET | `/items/:id/edit` | Display edit form for a specific item |
 | Update Item | PUT | `/items/:id` | Update wishlist item you own |
 | Delete Item | DELETE | `/items/:id` | Delete a wishlist item you own |

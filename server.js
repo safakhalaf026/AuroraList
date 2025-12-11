@@ -17,7 +17,8 @@ const passUserToView = require('./middleware/passUserToView.js')
 const isSignedIn = require('./middleware/isSignedIn.js')
 
 // Controllers
-const authCtrl = require('./controllers/auth') 
+const authCtrl = require('./controllers/auth');
+const pagesCtrl = require('./controllers/pages.js')
 
 const port = process.env.PORT ? process.env.PORT : '3000' // Set the port from environment variable or default to 3000
 
@@ -42,20 +43,11 @@ app.use(
 app.use(passUserToView) // reads and initializes the cookie
  
 // ---------- PUBLIC ROUTES ----------
-
-app.get('/', async (req, res) => {
-  res.render('index.ejs')
-})
-
 app.use('/auth', authCtrl) // an req starting with this prefix will be forwarded to the authCtrl
 
 // ---------- PROTECTED ROUTES ----------
 app.use(isSignedIn) // must be placed BEFORE routes we want to protect to authorize sign in
-
-app.get('/vip-lounge', async (req, res) => {
-  res.send('VIP PAGE')
-})
-
+app.use('/', pagesCtrl)
 
 // Listener 
 app.listen(port, () => {
