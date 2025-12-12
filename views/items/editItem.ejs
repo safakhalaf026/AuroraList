@@ -17,6 +17,9 @@
         <label for="purchaseLink">Purchase Link</label>
         <input id="purchaseLink" type="text" name="purchaseLink" value="<%= item.purchaseLink%>">
 <br>
+        <label for="isBought">Mark as Bought?</label>
+        <input id="isBought" type="checkbox" name="isBought" type="checkbox" <% if(item.isBought){ %> checked="<%= item.isBought%>"><%} %> <br>
+<br>
         <label for="category">Category</label>
         <select id="category" type="text" name="category" >
             <option value="Clothes" <%= item.category === "Clothes" ? "selected" : "" %>>Clothes</option>

@@ -71,7 +71,7 @@ router.put('/:id', async(req,res)=>{
         const item = await Item.findById(req.params.id)
         const isOwner = item.owner.equals(req.session.user._id)
         if(isOwner){
-            await item.updateOne(req.body)
+            await Item.findByIdAndUpdate(req.params.id,{isBought:!item.isBought})
             res.redirect('/items')
         }else{
             throw new Error(`Permission denied to ${req.session.user.username}`) // defaults to custom error and catch block
