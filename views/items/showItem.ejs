@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= item.itemName %></title>
+</head>
+<body>
+    <h1><%= item.itemName %></h1>
+    <ul>
+        <li>
+            <b><%= item.itemName %></b> <br>
+            Retail Price: <%= item.retailPrice %> <br>
+            Item Category: <%= item.category %> <br>
+            Purchase Link: <a href="<%= item.purchaseLink %>"><%= item.itemName %></a> <br>
+
+            <%if(!item.isBought){%>
+                Purchase Status: Pending
+            <% }else{%>
+                Purchase Status: Bought
+            <% }%> <br>
+
+            <%if(item.notes !=='' ){%>
+                Notes: <%= item.notes %> <br>
+            <% }%>
+            Posted by: <%= item.owner.username %> <br>
+            <% if(item.owner._id.equals(user._id)){ %>
+                <a href="/items/<%= item._id %>/edit">Edit Item</a>
+            <%}%>
+            
+        </li> <br>
+    </ul>
+
+</body>
+</html>

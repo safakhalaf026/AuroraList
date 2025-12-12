@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wishlist </title>
+    <title>All items</title>
 </head>
 <body>
-    <h1>My Wishlist Items</h1>
+        <h1>Wishlist Items</h1>
     <ul>
-        <% userItems.forEach(eachItem => { %>
+        <% allItems.forEach(eachItem => { %>
             <li>
                 <b><%= eachItem.itemName %></b> <br>
-                Item Category: <%= eachItem.category %> <br>
                 <%if(!eachItem.isBought){%>
                     Purchase Status: Pending
                 <% }else{%>
                     Purchase Status: Bought
                 <% }%> <br>
-                <a href="/items/<%= eachItem._id %>"> Item details</a> 
+                <a href="/items/<%= eachItem._id %>"> Item details</a> <br>
+                Posted by: <%= eachItem.owner.username %> <br>
             </li> <br>
         <% }) %>
     </ul>
