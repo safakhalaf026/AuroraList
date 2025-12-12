@@ -84,7 +84,14 @@ router.put('/:id', async(req,res)=>{
 // Delete a wishlist item you own
 router.delete('/:id', async(req,res)=>{
     try {
-        //logic here
+        const item = await Item.findById(req.params.id)
+        const isOwner = item.owner.equals(req.session.user._id)
+        if(isOwner){
+            await item.deleteOne(req.body)
+            res.redirect('/items')
+        }else{
+            throw new Error(`Permission denied to ${req.session.user.username}`) // defaults to custom error and catch block
+        }
     } catch (error) {
         console.error('The following error was encountered:' + error)
     }

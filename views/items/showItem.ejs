@@ -26,7 +26,9 @@
             Posted by: <%= item.owner.username %> <br>
             <% if(item.owner._id.equals(user._id)){ %>
                 <a href="/items/<%= item._id %>/edit">Edit Item</a>
-                <a href="/items/<%= item._id %>/edit">Edit Item</a>
+                <form action="/items/<%= item._id%>?_method=DELETE" method =post>
+                    <button>Delete Item</button>
+                </form>
             <%}%>
             
         </li> <br>
