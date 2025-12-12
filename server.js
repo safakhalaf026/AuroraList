@@ -17,8 +17,9 @@ const passUserToView = require('./middleware/passUserToView.js')
 const isSignedIn = require('./middleware/isSignedIn.js')
 
 // Controllers
-const authCtrl = require('./controllers/auth');
+const authCtrl = require('./controllers/auth')
 const pagesCtrl = require('./controllers/pages.js')
+const itemsCtrl = require('./controllers/items.js')
 
 const port = process.env.PORT ? process.env.PORT : '3000' // Set the port from environment variable or default to 3000
 
@@ -48,6 +49,7 @@ app.use('/auth', authCtrl) // an req starting with this prefix will be forwarded
 // ---------- PROTECTED ROUTES ----------
 app.use(isSignedIn) // must be placed BEFORE routes we want to protect to authorize sign in
 app.use('/', pagesCtrl)
+app.use('/items', itemsCtrl)
 
 // Listener 
 app.listen(port, () => {
