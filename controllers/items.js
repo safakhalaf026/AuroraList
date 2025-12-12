@@ -1,21 +1,23 @@
 const express = require('express')
 
 const router = express.Router()
+const User = require('../models/user')
 const Item = require('../models/item')
 
-// Full index (Show More)
-router.get('/', async(req,res)=>{
-    try {
-        //logic here
-    } catch (error) {
-        console.error('The following error was encountered:' + error)
-    }
-})
+// // Full index (Show More)
+// router.get('/', async(req,res)=>{
+//     try {
+//         // logic here
+//     } catch (error) {
+//         console.error('The following error was encountered:' + error)
+//     }
+// })
 
 // User full index (Show All)
 router.get('/mine', async(req,res)=>{
     try {
-        //logic here
+        const userItems = await Item.find({}).populate('owner')
+        res.render('/items/userIndex.ejs')
     } catch (error) {
         console.error('The following error was encountered:' + error)
     }
@@ -24,7 +26,7 @@ router.get('/mine', async(req,res)=>{
 // Display form to create a new item
 router.get('/new', async(req,res)=>{
     try {
-        //logic here
+        return res.render('items/newItem.ejs')
     } catch (error) {
         console.error('The following error was encountered:' + error)
     }
@@ -33,54 +35,57 @@ router.get('/new', async(req,res)=>{
 // Add new item to logged-in user's wishlist
 router.post('/', async(req,res)=>{
     try {
-        //logic here
+        req.body.owner = req.session.user._id
+        req.body.isBought = false
+        await Item.create(req.body)
+        res.redirect('/mine')
     } catch (error) {
         console.error('The following error was encountered:' + error)
     }
 })
 
-// Display details page of a single item
-router.get('/:id', async(req,res)=>{
-    try {
-        //logic here
-    } catch (error) {
-        console.error('The following error was encountered:' + error)
-    }
-})
+// // Display details page of a single item
+// router.get('/:id', async(req,res)=>{
+//     try {
+//         //logic here
+//     } catch (error) {
+//         console.error('The following error was encountered:' + error)
+//     }
+// })
 
-// Display edit form for a specific item
-router.get('/:id/edit', async(req,res)=>{
-    try {
-        //logic here
-    } catch (error) {
-        console.error('The following error was encountered:' + error)
-    }
-})
+// // Display edit form for a specific item
+// router.get('/:id/edit', async(req,res)=>{
+//     try {
+//         //logic here
+//     } catch (error) {
+//         console.error('The following error was encountered:' + error)
+//     }
+// })
 
-// Update wishlist item you own
-router.put('/:id', async(req,res)=>{
-    try {
-        //logic here
-    } catch (error) {
-        console.error('The following error was encountered:' + error)
-    }
-})
+// // Update wishlist item you own
+// router.put('/:id', async(req,res)=>{
+//     try {
+//         //logic here
+//     } catch (error) {
+//         console.error('The following error was encountered:' + error)
+//     }
+// })
 
-// Delete a wishlist item you own
-router.delete('/:id', async(req,res)=>{
-    try {
-        //logic here
-    } catch (error) {
-        console.error('The following error was encountered:' + error)
-    }
-})
+// // Delete a wishlist item you own
+// router.delete('/:id', async(req,res)=>{
+//     try {
+//         //logic here
+//     } catch (error) {
+//         console.error('The following error was encountered:' + error)
+//     }
+// })
 
-// Add another user’s item to your wishlist
-router.post('/:id/copy', async(req,res)=>{
-    try {
-        //logic here
-    } catch (error) {
-        console.error('The following error was encountered:' + error)
-    }
-})
+// // Add another user’s item to your wishlist
+// router.post('/:id/copy', async(req,res)=>{
+//     try {
+//         //logic here
+//     } catch (error) {
+//         console.error('The following error was encountered:' + error)
+//     }
+// })
 module.exports = router

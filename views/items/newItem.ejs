@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+</head>
+<body>
+    <h1>Add new item to Wishlist!</h1>
+    <form action="/items" method =post>
+        <label for="itemName">Item Name</label>
+        <input id="itemName" type="text" name="itemName">
+<br>
+        <label for="retailPrice">Retail Price (BD)</label>
+        <input id="retailPrice" type="number" name="retailPrice"> 
+<br>
+        <label for="purchaseLink">Purchase Link</label>
+        <input id="purchaseLink" type="text" name="purchaseLink">
+<br>
+        <label for="category">Category</label>
+        <select id="category" type="text" name="category">
+            <option value="Clothes">Clothes</option>
+            <option value="Makeup">Makeup</option>
+            <option value="Skincare">Skincare</option>
+            <option value="Jewelry">Jewelry</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Home">Home</option>
+            <option value="Micellaneous">Micellaneous</option>
+        </select>    
+<br>
+        <label for="imageUrl">Image URL</label>
+        <input id="imageUrl" type="text" name="imageUrl">
+<br>
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes"></textarea>
+<br>
+        <button type="submit">Add item!</button>
+    </form>
+</body>
+</html>
