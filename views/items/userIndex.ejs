@@ -7,6 +7,23 @@
 </head>
 <body>
     <h1>My Wishlist Items</h1>
-    
+    <ul>
+        <% userItems.forEach(eachItem => { %>
+            <li>
+                <b><%= eachItem.itemName %></b> <br>
+                Retail Price: <%= eachItem.retailPrice %> <br>
+                Item Category: <%= eachItem.category %> <br>
+                Purchase Link: <a href="<%= eachItem.purchaseLink %>"><%= eachItem.itemName %></a> <br>
+                <%if(!eachItem.isBought){%>
+                    Purchase Status: Pending
+                <% }else{%>
+                    Purchase Status: Bought
+                <% }%> <br>
+                <%if(eachItem.notes !=='' ){%>
+                    Notes: <%= eachItem.notes %>
+                <% }%>
+            </li> <br>
+        <% }) %>
+    </ul>
 </body>
 </html>

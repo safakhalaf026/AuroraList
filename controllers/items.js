@@ -17,7 +17,7 @@ const Item = require('../models/item')
 router.get('/mine', async(req,res)=>{
     try {
         const userItems = await Item.find({}).populate('owner')
-        res.render('/items/userIndex.ejs')
+        res.render('items/userIndex.ejs', {userItems})
     } catch (error) {
         console.error('The following error was encountered:' + error)
     }
@@ -38,7 +38,7 @@ router.post('/', async(req,res)=>{
         req.body.owner = req.session.user._id
         req.body.isBought = false
         await Item.create(req.body)
-        res.redirect('/mine')
+        res.redirect('/items/mine')
     } catch (error) {
         console.error('The following error was encountered:' + error)
     }
