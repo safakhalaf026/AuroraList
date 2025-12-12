@@ -26,6 +26,7 @@
             Posted by: <%= item.owner.username %> <br>
             <% if(item.owner._id.equals(user._id)){ %>
                 <a href="/items/<%= item._id %>/edit">Edit Item</a>
+                <a href="/items/<%= item._id %>/edit">Edit Item</a>
             <%}%>
             
         </li> <br>

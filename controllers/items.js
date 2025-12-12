@@ -65,23 +65,30 @@ router.get('/:id/edit', async(req,res)=>{
     }
 })
 
-// // Update wishlist item you own
-// router.put('/:id', async(req,res)=>{
-//     try {
-//         //logic here
-//     } catch (error) {
-//         console.error('The following error was encountered:' + error)
-//     }
-// })
+// Update wishlist item you own
+router.put('/:id', async(req,res)=>{
+    try {
+        const item = await Item.findById(req.params.id)
+        const isOwner = item.owner.equals(req.session.user._id)
+        if(isOwner){
+            await item.updateOne(req.body)
+            res.redirect('/items')
+        }else{
+            throw new Error(`Permission denied to ${req.session.user.username}`) // defaults to custom error and catch block
+        }
+    } catch (error) {
+        console.error('The following error was encountered:' + error)
+    }
+})
 
-// // Delete a wishlist item you own
-// router.delete('/:id', async(req,res)=>{
-//     try {
-//         //logic here
-//     } catch (error) {
-//         console.error('The following error was encountered:' + error)
-//     }
-// })
+// Delete a wishlist item you own
+router.delete('/:id', async(req,res)=>{
+    try {
+        //logic here
+    } catch (error) {
+        console.error('The following error was encountered:' + error)
+    }
+})
 
 // // Add another user’s item to your wishlist
 // router.post('/:id/copy', async(req,res)=>{
