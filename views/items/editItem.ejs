@@ -6,6 +6,8 @@
     <title>Edit Item</title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
+    
     <h1>Edit item!</h1>
     <form action="/items/<%= item._id%>?_method=PUT" method =post>
         <label for="itemName">Item Name</label>

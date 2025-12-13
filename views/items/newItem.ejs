@@ -6,13 +6,14 @@
     <title>Add Item</title>
 </head>
 <body>
+    <%- include('../partials/_navbar.ejs') %>
     <h1>Add new item to Wishlist!</h1>
     <form action="/items" method =post>
         <label for="itemName">Item Name</label>
         <input id="itemName" type="text" name="itemName">
 <br>
         <label for="retailPrice">Retail Price (BD)</label>
-        <input id="retailPrice" type="number" name="retailPrice"> 
+        <input id="retailPrice" type="number" name="retailPrice" min="0"> 
 <br>
         <label for="purchaseLink">Purchase Link</label>
         <input id="purchaseLink" type="text" name="purchaseLink">

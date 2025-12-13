@@ -4,7 +4,7 @@ const isSignedIn = (req, res, next) => {
     next();
   } else {
     console.log('Unauthorized!!!');
-    res.redirect('/auth/sign-in');
+    res.redirect('/auth/sign-up');
   }
 };
 

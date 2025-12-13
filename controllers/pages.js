@@ -1,11 +1,12 @@
-const express = require('express');
+const express = require('express')
 
-const router = express.Router();
+const Item = require('../models/item')
+const router = express.Router()
 
 router.get('/', async (req, res) => {
-    // query for 3 most recent
-    // query for the top items for the user
-  res.render('index.ejs')
+        const allItems = await Item.find().sort({_id:-1}).limit(3).populate('owner')
+        const userItems = await Item.find({owner: req.session.user._id}).sort({_id:-1}).limit(3).populate('owner') 
+  res.render('index.ejs', {allItems,userItems})
 })
 
 module.exports = router;

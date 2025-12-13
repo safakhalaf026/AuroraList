@@ -3,10 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Aurora List</title>
 </head>
 <body>
-  <%- include('./partials/_navbar.ejs') %>
-  <p><a href="/vip-lounge">Get into the VIP Users Only lounge!</a></p>
+  <%- include('./partials/_navbar.ejs') %> <br>
+  <a href="/items/new">Add new item to Wishlist!</a>
+  <h1>Wishlist Items</h1>
+    <ul>
+        <% allItems.forEach(eachItem => { %>
+            <li>
+                <b><%= eachItem.itemName %></b> <br>
+                <%if(!eachItem.isBought){%>
+                    Purchase Status: Pending
+                <% }else{%>
+                    Purchase Status: Bought
+                <% }%> <br>
+                <a href="/items/<%= eachItem._id %>"> Item details</a> <br>
+                Posted by: <%= eachItem.owner.username %> <br>
+            </li> <br>
+        <% }) %>
+        <a href="/items">See More</a>
+    </ul><br>
+    <h1>My Wishlist Items</h1>
+    <ul>
+        <% userItems.forEach(eachItem => { %>
+            <li>
+                <b><%= eachItem.itemName %></b> <br>
+                Item Category: <%= eachItem.category %> <br>
+                <%if(!eachItem.isBought){%>
+                    Purchase Status: Pending
+                <% }else{%>
+                    Purchase Status: Bought
+                <% }%> <br>
+                <a href="/items/<%= eachItem._id %>"> Item details</a> 
+            </li> <br>
+        <% }) %>
+        <a href="/items/mine">See All</a>
+    </ul>
 </body>
 </html>
