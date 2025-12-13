@@ -3,42 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Aurora List</title>
 </head>
 <body>
   <%- include('./partials/_navbar.ejs') %> <br>
   <a href="/items/new">Add new item to Wishlist!</a>
-  <h1>Wishlist Items</h1>
-    <ul>
-        <% allItems.forEach(eachItem => { %>
-            <li>
-                <b><%= eachItem.itemName %></b> <br>
-                <%if(!eachItem.isBought){%>
-                    Purchase Status: Pending
-                <% }else{%>
-                    Purchase Status: Bought
-                <% }%> <br>
-                <a href="/items/<%= eachItem._id %>"> Item details</a> <br>
-                Posted by: <%= eachItem.owner.username %> <br>
-            </li> <br>
-        <% }) %>
-        <a href="/items">See More</a>
-    </ul><br>
+    <h1>Wishlist Items</h1>
+    <div class="cards-row">
+        <% allItems.forEach(eachItem=> { %>
+            <div class=card>
+                <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title"><%= eachItem.itemName %></h3>
+                    <%if(!eachItem.isBought){%>
+                        <p class="card-text">Purchase Status: Pending</p>
+                    <% }else{%>
+                        <p class="card-text">Purchase Status: Bought</p>
+                    <% }%> <br>
+                    <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a> <br>
+                    <p class="card-text">Posted by: <%= eachItem.owner.username %></p> <br>
+                </div>
+            </div>
+        <% }) %> <br>
+    </div>
+    <div class="view-all-wrapper">
+        <a href="/items" class="view-all-link card-btn">See More</a>
+    </div>
+    
     <h1>My Wishlist Items</h1>
-    <ul>
-        <% userItems.forEach(eachItem => { %>
-            <li>
-                <b><%= eachItem.itemName %></b> <br>
-                Item Category: <%= eachItem.category %> <br>
-                <%if(!eachItem.isBought){%>
-                    Purchase Status: Pending
-                <% }else{%>
-                    Purchase Status: Bought
-                <% }%> <br>
-                <a href="/items/<%= eachItem._id %>"> Item details</a> 
-            </li> <br>
+    <div class="cards-row">
+        <% userItems.forEach(eachItem=> { %>
+            <div class=card>
+                <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title"><%= eachItem.itemName %></h3>
+                    <%if(!eachItem.isBought){%>
+                        <p class="card-text">Purchase Status: Pending</p>
+                    <% }else{%>
+                        <p class="card-text">Purchase Status: Bought</p>
+                    <% }%> <br>
+                    <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a> <br>
+                </div>
+            </div>
         <% }) %>
-        <a href="/items/mine">See All</a>
-    </ul>
+    </div>
+    <div class="view-all-wrapper">
+        <a href="/items/mine" class="view-all-link card-btn">See All</a>
+    </div>
 </body>
 </html>
