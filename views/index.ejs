@@ -19,7 +19,9 @@
     <div class="cards-row">
         <% allItems.forEach(eachItem=> { %>
             <div class=card>
-                <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                <div class="card-img-div">
+                    <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title"><%= eachItem.itemName %></h3>
                     <div class="card-content">
@@ -36,14 +38,16 @@
         <% }) %> 
     </div>
     <div class="view-all-wrapper">
-        <a href="/items" class="view-all-link card-btn">See More</a>
+        <a href="/items" class="view-btn">See More</a>
     </div>
     
     <h2 class="sub-header">My Wishlist Items</h2>
     <div class="cards-row">
         <% userItems.forEach(eachItem=> { %>
             <div class=card>
-                <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                <div class="card-img-div">
+                    <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                </div>
                 <div class="card-body">
                     <h3 class="card-title"><%= eachItem.itemName %></h3>
                     <%if(!eachItem.isBought){%>
@@ -57,7 +61,8 @@
         <% }) %>
     </div>
     <div class="view-all-wrapper">
-        <a href="/items/mine" class="view-all-link card-btn">See All</a>
+        <a href="/items/mine" class="view-btn">See All</a>
     </div>
+  <%- include('./partials/_footer.ejs') %>
 </body>
 </html>
