@@ -1,5 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+  --aurora-violet: #5B3FD6;
+  --nebula-purple: #3E2A7B;
+  --aurora-teal: #2FB7A5;
+
+  --polar-blue: #4C8ED9;
+  --glacier-mint: #8BE0C8;
+
+  --aurora-night: #0F1024;
+  --midnight-panel: #1A1C3A;
+  --soft-starlight: #2A2D55;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #C7C9E2;
+}
+
 * {
+  font-family:'Inter', sans-serif;
+  margin: 0;
   box-sizing: border-box;
+}
+
+.navbar{
+  display:flex;
+  flex-direction: row;
+  max-width: 100vw;
+  padding: 5px 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--nebula-purple);
+}
+
+#nav-header{
+  font-family: 'Space Grotesk', 'Inter';
+  color:var(--text-primary);
+  size: 1em !important;
+  margin: 0;
+}
+
+.navLink{
+  text-decoration: none;
+  margin: 0 15px;
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.navLink:hover{
+  color:var(--polar-blue);
 }
 
 .cards-row {
@@ -9,6 +57,21 @@
   margin-bottom: 40px;
   justify-content: center;
 }
+
+.intro{
+  width:100vw;
+  /* add BG color */
+  transition: 0.3s;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+intro-header
+intro-content
+intro-subheader
+intro-text
+introLinks
 
 .card{
   width:300px;
@@ -39,21 +102,26 @@
 .card-title{
   font-size: 1.4em;
   font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin: 0 0 15px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2em;
 }
 
 .card-text{
   font-size: 14px;
   color: black;
   line-height: 1.5;
-  margin-bottom: 15px;
+  margin: 3px;
 }
 
 .card-btn{
   display: inline-block;
-  padding: 10px 15px;
-  background-color: #007bff;
+  padding: 2px 2px;
+  margin: 3px;
+  background-color: #515d6a60;
   color: white;
   text-decoration: none;
   border-radius: 5px;

@@ -1,11 +1,21 @@
 
 <nav>
-  <% if (user) { %>
-  <a href="/">Home</a>
-  <a href="/items/mine">My Wishlist</a>
-  <a href="/auth/sign-out">Sign Out</a>
-  <% } else { %>
-  <a href="/auth/sign-up">Sign Up</a>
-  <a href="/auth/sign-in">Sign In</a>
+    <% if (user) { %>  
+    <div class="navbar">
+      <h1 id="nav-header">Aurora List</h1>
+      <div class="nav-links">
+        <a class="navLink" href="/">Home</a>
+        <a class="navLink" href="/items/mine">My Wishlist</a>
+        <a class="navLink" href="/auth/sign-out">Sign Out</a> 
+      </div>
+    </div>
+    <% } else { %>
+    <div class="navbar">
+      <h1 id="nav-header">Aurora List</h1>
+      <div class="nav-links">
+       <a class="navLink" href="/auth/sign-up">Sign Up</a>
+       <a class="navLink" href="/auth/sign-in">Sign In</a>
+      </div>
+    </div>
   <% } %>
 </nav>

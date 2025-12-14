@@ -7,31 +7,40 @@
   <title>Aurora List</title>
 </head>
 <body>
-  <%- include('./partials/_navbar.ejs') %> <br>
-  <a href="/items/new">Add new item to Wishlist!</a>
-    <h1>Wishlist Items</h1>
+  <%- include('./partials/_navbar.ejs') %>
+  <div class="intro">
+    <h1 class="intro-header">Welcome Back <%= user.username %></h1>
+    <div class="intro-content">
+        <h2 class="intro-subheader">Your wishlist, reimagined.</h2>
+        <p class="intro-text">Save what you want, discover what others love, and organize it all in one place.</p>
+        <a class="introLinks" href="/items/new">Add new item to Wishlist!</a>
+    </div>
+  </div>
+    <h2>Wishlist Items</h2>
     <div class="cards-row">
         <% allItems.forEach(eachItem=> { %>
             <div class=card>
                 <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
                 <div class="card-body">
                     <h3 class="card-title"><%= eachItem.itemName %></h3>
-                    <%if(!eachItem.isBought){%>
-                        <p class="card-text">Purchase Status: Pending</p>
-                    <% }else{%>
-                        <p class="card-text">Purchase Status: Bought</p>
-                    <% }%> <br>
-                    <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a> <br>
-                    <p class="card-text">Posted by: <%= eachItem.owner.username %></p> <br>
+                    <div class="card-content">
+                        <%if(!eachItem.isBought){%>
+                            <p class="card-text">Purchase Status: Pending</p>
+                        <% }else{%>
+                            <p class="card-text">Purchase Status: Bought</p>
+                        <% }%>
+                        <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a> 
+                        <p class="card-text">Posted by: <%= eachItem.owner.username %></p>                     
+                    </div>
                 </div>
             </div>
-        <% }) %> <br>
+        <% }) %> 
     </div>
     <div class="view-all-wrapper">
         <a href="/items" class="view-all-link card-btn">See More</a>
     </div>
     
-    <h1>My Wishlist Items</h1>
+    <h2>My Wishlist Items</h2>
     <div class="cards-row">
         <% userItems.forEach(eachItem=> { %>
             <div class=card>
@@ -42,8 +51,8 @@
                         <p class="card-text">Purchase Status: Pending</p>
                     <% }else{%>
                         <p class="card-text">Purchase Status: Bought</p>
-                    <% }%> <br>
-                    <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a> <br>
+                    <% }%>
+                    <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a>
                 </div>
             </div>
         <% }) %>
