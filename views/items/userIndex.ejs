@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>My Wishlist </title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>My Wishlist Items</h1>
-    <ul>
-        <% userItems.forEach(eachItem => { %>
-            <li>
-                <b><%= eachItem.itemName %></b> <br>
-                Item Category: <%= eachItem.category %> <br>
-                <%if(!eachItem.isBought){%>
-                    Purchase Status: Pending
-                <% }else{%>
-                    Purchase Status: Bought
-                <% }%> <br>
-                <a href="/items/<%= eachItem._id %>"> Item details</a> 
-            </li> <br>
+    <h2 class="sub-header">My Wishlist Items</h2>
+    <div class="cards-row">
+        <% userItems.forEach(eachItem=> { %>
+            <a href="/items/<%= eachItem._id %>" class="card-link">
+                <div class=card>
+                    <div class="card-img-div">
+                        <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= eachItem.itemName %></h3>
+                        <div class="card-content">
+                            <%if(!eachItem.isBought){%>
+                                <p class="card-text">Purchase Status: Pending</p>
+                            <% }else{%>
+                                <p class="card-text">Purchase Status: Bought</p>
+                            <% }%>
+                        </div>
+                    </div>
+                </div>
+            </a>
         <% }) %>
-    </ul>
+    </div>
+    <%- include('../partials/_footer.ejs') %>
 </body>
 </html>

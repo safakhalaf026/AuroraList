@@ -8,6 +8,7 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    <main>
     <h2 class="sub-header">Wishlist Items</h2>
     <div class="cards-row">
         <% allItems.forEach(eachItem=> { %>
@@ -30,7 +31,8 @@
                 </div>
             </a>
         <% }) %>
-    </div>
+    </div> 
+    </main>
     <%- include('../partials/_footer.ejs') %>
 </body>
 </html>

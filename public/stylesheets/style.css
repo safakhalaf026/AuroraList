@@ -6,7 +6,7 @@
   --aurora-teal: #2FB7A5;
 
   --icy-lavender: #c0b3d8;
-  --polar-lav--icy-lavender: #4C8ED9;
+  --polar-blue: #4C8ED9;
   --glacier-mint: #8BE0C8;
 
   --aurora-night: #0F1024;
@@ -26,6 +26,16 @@
 html{
   background-color: var(--lavender-gray);
   color: var(--aurora-night);
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main{
+  flex: 1;
 }
 
 .navbar{
@@ -101,7 +111,7 @@ html{
 }
 
 .introLinks:hover{
-  color:var(--polar-lav--icy-lavender);
+  color:var(--polar-blue);
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
@@ -196,6 +206,7 @@ background-color: white;
 }
 
 .button{
+  width: 90px;
   color: var(--lavender-gray);
   background-color: var(--midnight-panel);
   padding: 10px;
@@ -204,11 +215,17 @@ background-color: white;
   text-decoration: none;
 }
 
+.button:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
 footer{
   display:flex;
   flex-direction: row;
   max-width: 100vw;
   padding: 5px;
+  margin-top: auto;
   background: linear-gradient(    
     135deg,
     #564874,   
@@ -216,13 +233,13 @@ footer{
     color: var(--lavender-gray);
 }
 
-/* .footer-rights{
-  justify-content: flexs;
+.footer-rights{
+  justify-content: right;
 }
 
 .footer-text{
   justify-content: flex-end;
-} */
+}
 
 .footerLink{
   color: var(--nebula-purple);   
