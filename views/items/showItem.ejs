@@ -15,7 +15,7 @@
         <div class="item-details">
             <h1 class=" main-header item-header"><%= item.itemName %></h1>
             <div class="item-content">
-                    <p><b>Retail Price: </b><%= item.retailPrice %></p> 
+                    <p><b>Retail Price: </b><%= item.retailPrice %> BD</p> 
                     <p><b>Item Category: </b><%= item.category %></p> 
                     <p><b>Purchase Link: </b><a href="<%= item.purchaseLink %>"><%= item.itemName %></a></p> 
 
@@ -30,16 +30,19 @@
                     <% }%>
                     <p><b>Posted by: </b><%= item.owner.username %> </p>
             </div>
-            <div class="action-buttons">
-                            <% if(item.owner._id.equals(user._id)){ %>
-                        <a  class="item-button" href="/items/<%= item._id %>/edit">Edit Item</a>
-                        <form action="/items/<%= item._id%>?_method=DELETE" method =post>
-                            <button class="item-button" >Delete Item</button>
+            <div class="actions">
+                <form action="/items/<%= item._id%>?_method=DELETE" method=post>
+                    <button class="actions-text action-one button">Mark as Purchased</button>
+                </form>
+
+                <div class="action-secondary">
+                    <% if(item.owner._id.equals(user._id)){ %>
+                        <a class="actions-text action-two button" href="/items/<%= item._id %>/edit">Edit Item</a>
+                        <form action="/items/<%= item._id%>?_method=DELETE" method=post>
+                            <button class="actions-text action-two button">Delete Item</button>
                         </form>
-                        <form action="/items/<%= item._id%>?_method=DELETE" method =post>
-                            <button class="item-button" >Mark as Purchased</button>
-                        </form>
-                    <%}%>  
+                    <%}%>
+                </div>
             </div>
         </div>
     </div>
