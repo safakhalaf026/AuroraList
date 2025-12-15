@@ -3,37 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title><%= item.itemName %></title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= item.itemName %></h1>
-    <ul>
-        <li>
-            <b><%= item.itemName %></b> <br>
-            Retail Price: <%= item.retailPrice %> <br>
-            Item Category: <%= item.category %> <br>
-            Purchase Link: <a href="<%= item.purchaseLink %>"><%= item.itemName %></a> <br>
+    <div class="item">
+        <div class="item-img">
+            <img src="<%= item.imageUrl %>" alt="">
+        </div>
+        <div class="item-details">
+            <h1 class=" main-header item-header"><%= item.itemName %></h1>
+            <div class="item-content">
+                    <p><b>Retail Price: </b><%= item.retailPrice %></p> 
+                    <p><b>Item Category: </b><%= item.category %></p> 
+                    <p><b>Purchase Link: </b><a href="<%= item.purchaseLink %>"><%= item.itemName %></a></p> 
 
-            <%if(!item.isBought){%>
-                Purchase Status: Pending
-            <% }else{%>
-                Purchase Status: Bought
-            <% }%> <br>
+                    <%if(!item.isBought){%>
+                        <p><b>Purchase Status: </b> Pending</p>
+                    <% }else{%>
+                        <p><b>Purchase Status: </b>Bought</p>
+                    <% }%> 
 
-            <%if(item.notes !=='' ){%>
-                Notes: <%= item.notes %> <br>
-            <% }%>
-            Posted by: <%= item.owner.username %> <br>
-            <% if(item.owner._id.equals(user._id)){ %>
-                <a href="/items/<%= item._id %>/edit">Edit Item</a>
-                <form action="/items/<%= item._id%>?_method=DELETE" method =post>
-                    <button>Delete Item</button>
-                </form>
-            <%}%>
-            
-        </li> <br>
-    </ul>
-
+                    <%if(item.notes !=='' ){%>
+                        <p><b>Notes: </b><%= item.notes %> </p>
+                    <% }%>
+                    <p><b>Posted by: </b><%= item.owner.username %> </p>
+            </div>
+            <div class="action-buttons">
+                            <% if(item.owner._id.equals(user._id)){ %>
+                        <a  class="item-button" href="/items/<%= item._id %>/edit">Edit Item</a>
+                        <form action="/items/<%= item._id%>?_method=DELETE" method =post>
+                            <button class="item-button" >Delete Item</button>
+                        </form>
+                        <form action="/items/<%= item._id%>?_method=DELETE" method =post>
+                            <button class="item-button" >Mark as Purchased</button>
+                        </form>
+                    <%}%>  
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/_footer.ejs') %>
 </body>
 </html>
