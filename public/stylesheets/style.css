@@ -125,6 +125,7 @@ html{
 
 .card{
   width:300px;
+  height: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -182,18 +183,10 @@ background-color: white;
   margin: 3px;
 }
 
-.card-btn{
-  display: inline-block;
-  padding: 2px 2px;
-  margin: 3px;
-  color: var(--lavender-gray);
-  text-decoration:wavy;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.card-btn:hover {
-    background-color: #0056b3; 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .view-all-wrapper{
@@ -202,11 +195,40 @@ background-color: white;
   margin: 10px;
 }
 
-.view-btn{
+.button{
   color: var(--lavender-gray);
   background-color: var(--midnight-panel);
   padding: 10px;
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
+}
+
+footer{
+  display:flex;
+  flex-direction: row;
+  max-width: 100vw;
+  padding: 5px;
+  background: linear-gradient(    
+    135deg,
+    #564874,   
+    #6557a2);
+    color: var(--lavender-gray);
+}
+
+/* .footer-rights{
+  justify-content: flexs;
+}
+
+.footer-text{
+  justify-content: flex-end;
+} */
+
+.footerLink{
+  color: var(--nebula-purple);   
+  text-decoration: none;
+}
+
+.footerLink:hover{
+  color: var(--glacier-mint);   
 }

@@ -18,24 +18,25 @@
     <h2 class="sub-header">Wishlist Items</h2>
     <div class="cards-row">
         <% allItems.forEach(eachItem=> { %>
-            <div class=card>
-                <div class="card-img-div">
-                    <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title"><%= eachItem.itemName %></h3>
-                    <div class="card-content">
-                        <%if(!eachItem.isBought){%>
-                            <p class="card-text">Purchase Status: Pending</p>
-                        <% }else{%>
-                            <p class="card-text">Purchase Status: Bought</p>
-                        <% }%>
-                        <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a> 
-                        <p class="card-text">Posted by: <%= eachItem.owner.username %></p>                     
+            <a href="/items/<%= eachItem._id %>" class="card-link">
+                <div class=card>
+                    <div class="card-img-div">
+                        <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= eachItem.itemName %></h3>
+                        <div class="card-content">
+                            <%if(!eachItem.isBought){%>
+                                <p class="card-text">Purchase Status: Pending</p>
+                            <% }else{%>
+                                <p class="card-text">Purchase Status: Bought</p>
+                            <% }%>
+                        <p class="card-text">Posted by: <%= eachItem.owner.username %></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% }) %> 
+            </a>
+        <% }) %>
     </div>
     <div class="view-all-wrapper">
         <a href="/items" class="view-btn">See More</a>
@@ -44,24 +45,27 @@
     <h2 class="sub-header">My Wishlist Items</h2>
     <div class="cards-row">
         <% userItems.forEach(eachItem=> { %>
-            <div class=card>
-                <div class="card-img-div">
-                    <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+            <a href="/items/<%= eachItem._id %>" class="card-link">
+                <div class=card>
+                    <div class="card-img-div">
+                        <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= eachItem.itemName %></h3>
+                        <div class="card-content">
+                            <%if(!eachItem.isBought){%>
+                                <p class="card-text">Purchase Status: Pending</p>
+                            <% }else{%>
+                                <p class="card-text">Purchase Status: Bought</p>
+                            <% }%>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h3 class="card-title"><%= eachItem.itemName %></h3>
-                    <%if(!eachItem.isBought){%>
-                        <p class="card-text">Purchase Status: Pending</p>
-                    <% }else{%>
-                        <p class="card-text">Purchase Status: Bought</p>
-                    <% }%>
-                    <a href="/items/<%= eachItem._id %>" class="card-btn">Item details</a>
-                </div>
-            </div>
+            </a>
         <% }) %>
     </div>
     <div class="view-all-wrapper">
-        <a href="/items/mine" class="view-btn">See All</a>
+        <a href="/items/mine" class="button">See All</a>
     </div>
   <%- include('./partials/_footer.ejs') %>
 </body>

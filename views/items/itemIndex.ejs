@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>All items</title>
 </head>
 <body>
-        <%- include('../partials/_navbar.ejs') %>
-        <h1>Wishlist Items</h1>
-    <ul>
-        <% allItems.forEach(eachItem => { %>
-            <li>
-                <b><%= eachItem.itemName %></b> <br>
-                <%if(!eachItem.isBought){%>
-                    Purchase Status: Pending
-                <% }else{%>
-                    Purchase Status: Bought
-                <% }%> <br>
-                <a href="/items/<%= eachItem._id %>"> Item details</a> <br>
-                Posted by: <%= eachItem.owner.username %> <br>
-            </li> <br>
+    <%- include('../partials/_navbar.ejs') %>
+    <h2 class="sub-header">Wishlist Items</h2>
+    <div class="cards-row">
+        <% allItems.forEach(eachItem=> { %>
+            <a href="/items/<%= eachItem._id %>" class="card-link">
+                <div class=card>
+                    <div class="card-img-div">
+                        <img src="<%= eachItem.imageUrl %>" alt="image of <%= eachItem.itemName %>" class="card-img">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= eachItem.itemName %></h3>
+                        <div class="card-content">
+                            <%if(!eachItem.isBought){%>
+                                <p class="card-text">Purchase Status: Pending</p>
+                            <% }else{%>
+                                <p class="card-text">Purchase Status: Bought</p>
+                            <% }%>
+                        <p class="card-text">Posted by: <%= eachItem.owner.username %></p>
+                        </div>
+                    </div>
+                </div>
+            </a>
         <% }) %>
-    </ul>
+    </div>
+    <%- include('../partials/_footer.ejs') %>
 </body>
 </html>
