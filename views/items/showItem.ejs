@@ -31,8 +31,8 @@
                     <p><b>Posted by: </b><%= item.owner.username %> </p>
             </div>
             <div class="actions">
-                <form action="/items/<%= item._id%>?_method=DELETE" method=post>
-                    <button class="actions-text action-one button">Mark as Purchased</button>
+                <form action="/items/<%= item._id%>/mark?_method=PUT" method=post>
+                    <button class="actions-text action-one button">Change Purchase Status</button>
                 </form>
 
                 <div class="action-secondary">

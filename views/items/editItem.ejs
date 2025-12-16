@@ -3,43 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit Item</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
     
-    <h1>Edit item!</h1>
-    <form action="/items/<%= item._id%>?_method=PUT" method =post>
-        <label for="itemName">Item Name</label>
-        <input id="itemName" type="text" name="itemName" value="<%= item.itemName %>">
-<br>
-        <label for="retailPrice">Retail Price (BD)</label>
-        <input id="retailPrice" type="number" name="retailPrice" value="<%= item.retailPrice%>"> 
-<br>
-        <label for="purchaseLink">Purchase Link</label>
-        <input id="purchaseLink" type="text" name="purchaseLink" value="<%= item.purchaseLink%>">
-<br>
-        <label for="isBought">Mark as Bought?</label>
-        <input id="isBought" type="checkbox" name="isBought" type="checkbox" <% if(item.isBought){ %> checked="<%= item.isBought%>"><%} %> <br>
-<br>
-        <label for="category">Category</label>
-        <select id="category" type="text" name="category" >
-            <option value="Clothes" <%= item.category === "Clothes" ? "selected" : "" %>>Clothes</option>
-            <option value="Makeup" <%= item.category === "Makeup" ? "selected" : "" %>>Makeup</option>
-            <option value="Skincare" <%= item.category === "Skincare" ? "selected" : "" %>>Skincare</option>
-            <option value="Jewelry" <%= item.category === "Jewelry" ? "selected" : "" %>>Jewelry</option>
-            <option value="Electronics" <%= item.category === "Electronics" ? "selected" : "" %>>Electronics</option>
-            <option value="Home" <%= item.category === "Home" ? "selected" : "" %>>Home</option>
-            <option value="Micellaneous" <%= item.category === "Micellaneous" ? "selected" : "" %>>Micellaneous</option>
-        </select>    
-<br>
-        <label for="imageUrl">Image URL</label>
-        <input id="imageUrl" type="text" name="imageUrl" value="<%= item.imageUrl %>">
-<br>
-        <label for="notes">Notes</label>
-        <textarea id="notes" name="notes"><%= item.notes %></textarea>
-<br>
-        <button type="submit">Edit item!</button>
+    <h1 class=" main-header page-header">Edit <%= item.itemName %></h1>
+    <form class="form" action="/items/<%= item._id%>?_method=PUT" method =post>
+        <div class="form-wrapper">
+                <label class="form-label" for="itemName">Item Name</label>
+                <input class="form-input" id="itemName" type="text" name="itemName"  value="<%= item.itemName %>">   
+        </div>
+
+        <div class="form-wrapper">
+                <label class="form-label" for="retailPrice">Retail Price (BD)</label>
+                <input class="form-input" id="retailPrice" type="number" name="retailPrice" min="0"  value="<%= item.retailPrice %>">  
+        </div>
+
+        <div class="form-wrapper">
+                <label class="form-label" for="purchaseLink">Purchase Link</label>
+                <input class="form-input" id="purchaseLink" type="text" name="purchaseLink"  value="<%= item.purchaseLink %>">
+        </div>
+
+        <div class="form-wrapper">
+                <label class="form-label" for="isBought">Mark as Bought? </label>
+                <input class="form-input" id="isBought" type="checkbox" name="isBought" type="checkbox" <% if(item.isBought){ %> checked="<%= item.isBought%>"<%} %>>
+        </div>
+
+        <div class="form-wrapper">
+                <label class="form-label" for="category">Category</label>
+                <select class="form-input" id="category" type="text" name="category">
+                        <option value="Clothes" <%= item.category === "Clothes" ? "selected" : "" %>>Clothes</option>
+                        <option value="Makeup" <%= item.category === "Makeup" ? "selected" : "" %>>Makeup</option>
+                        <option value="Skincare" <%= item.category === "Skincare" ? "selected" : "" %>>Skincare</option>
+                        <option value="Jewelry" <%= item.category === "Jewelry" ? "selected" : "" %>>Jewelry</option>
+                        <option value="Electronics" <%= item.category === "Electronics" ? "selected" : "" %>>Electronics</option>
+                        <option value="Home" <%= item.category === "Home" ? "selected" : "" %>>Home</option>
+                        <option value="Micellaneous" <%= item.category === "Micellaneous" ? "selected" : "" %>>Micellaneous</option>
+                </select>
+        </div>    
+
+        <div class="form-wrapper">
+                <label class="form-label" for="imageUrl">Image URL</label>
+                <textarea class="form-input" id="imageUrl" name="imageUrl"><%= item.imageUrl %></textarea>
+        </div>
+
+        <div class="form-wrapper">
+                <label class="form-label" for="notes">Notes</label>
+                <textarea class="form-input" id="notes" name="notes"><%= item.notes %></textarea>
+        </div>
+        <button class="button" type="submit">Edit item!</button>
     </form>
+    <%- include('../partials/_footer.ejs') %>
 </body>
 </html>

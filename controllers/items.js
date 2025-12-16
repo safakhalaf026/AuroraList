@@ -70,8 +70,9 @@ router.put('/:id', async(req,res)=>{
         const item = await Item.findById(req.params.id)
         const isOwner = item.owner.equals(req.session.user._id)
         if(isOwner){
-            await Item.findByIdAndUpdate(req.params.id,{isBought:!item.isBought})
-            res.redirect('/items')
+            req.body.isBought = Boolean(req.body.isBought)
+            await Item.findByIdAndUpdate(req.params.id, req.body, {runValidators: true})
+            res.redirect('/items/' + req.params.id)
         }else{
             throw new Error(`Permission denied to ${req.session.user.username}`) // defaults to custom error and catch block
         }
@@ -96,12 +97,21 @@ router.delete('/:id', async(req,res)=>{
     }
 })
 
-// // Add another user’s item to your wishlist
-// router.post('/:id/copy', async(req,res)=>{
-//     try {
-//         //logic here
-//     } catch (error) {
-//         console.error('The following error was encountered:' + error)
-//     }
-// })
+// charnge purchase status
+router.put('/:id/mark', async(req,res)=>{
+    try {
+        const item = await Item.findById(req.params.id)
+        const isOwner = item.owner.equals(req.session.user._id)
+        if(isOwner){
+            await Item.findByIdAndUpdate(req.params.id,{isBought:!item.isBought})
+            res.redirect('/items/' + req.params.id)
+        }else{
+            throw new Error(`Permission denied to ${req.session.user.username}`) // defaults to custom error and catch block
+        }
+        
+    } catch (error) {
+        console.error('The following error was encountered:' + error)
+    }
+})
+
 module.exports = router

@@ -28,4 +28,4 @@ Aurora List helps users keep track of items they want to buy, discover wishlist 
 | Edit Form | GET | `/items/:id/edit` | Display edit form for a specific item |
 | Update Item | PUT | `/items/:id` | Update wishlist item you own |
 | Delete Item | DELETE | `/items/:id` | Delete a wishlist item you own |
-| Copy Item | POST | `/items/:id/copy` | Add another user’s item to your wishlist |
+| Change Item Status | PUT | `/items/:id/mark` | Change purchase status |
