@@ -3,23 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Sign Up</title>
   </head>
   <body>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
+    <%- include('../partials/_navbar.ejs') %>
+    <h1 class="main-header page-header">Create a new account!</h1>
+    <form class="form" action="/auth/sign-up" method="POST">
+        <div class="form-wrapper">
+          <label class="form-label" for="username">Username:</label>
+          <input class="form-input"type="text" name="username" id="username" />
+        </div>
 
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
+        <div class="form-wrapper">
+          <label class="form-label" for="password">Password:</label>
+          <input class="form-input" type="password" name="password" id="password" />
+        </div>
 
-      <button type="submit">Sign up</button> <br>
+        <div class="form-wrapper">
+          <label class="form-label" for="confirmPassword">Confirm Password:</label>
+          <input class="form-input" type="password" name="confirmPassword" id="confirmPassword" />
+        </div>
+
+      <button class="button" type="submit">Sign up</button> <br>
     </form>
-    <p>Already have an account?</p>
-    <a href="/auth/sign-in">Log In</a>
+    <div class="signUp-wrapper">
+      <p>Already have an account?</p>
+      <a href="/auth/sign-in">Log In</a>
+    </div>
+    <%- include('../partials/_footer.ejs') %>
   </body>
 </html>

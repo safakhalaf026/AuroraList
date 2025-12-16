@@ -71,6 +71,22 @@ a {
   color:var(--icy-lavender);
 }
 
+.signUp-wrapper{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 12px ;
+  margin-top: auto;
+}
+
+
+.signUp-wrapper a{
+  color: var(--nebula-purple);
+}
+
+.signUp-wrapper a:hover{
+  color: var(--polar-blue);
+}
+
 .intro{
   width: 100%;
   padding: 15px 18px 18px 18px;
@@ -250,7 +266,7 @@ background-color: white;
   flex-direction: column;
   padding: 5px 10px ;
   width: 100%;
-  margin: 5px;
+  margin: 5px 5px 0px 5px;
   border-radius: 5px;
   border: 2px solid var(--soft-starlight);
   color: var(--soft-starlight);
